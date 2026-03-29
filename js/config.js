@@ -8,29 +8,25 @@
 const BOOK_CONFIG = {
 
     // ========== 书籍基本信息 ==========
-    title: "AI 副业实操手册",
-    subtitle: "从零开始，用AI打造你的第二收入",
+    title: "2026 AI赚钱指南",
+    subtitle: "7条已验证的AI副业路径，从零到月入过万",
 
     // ========== 封面设置 ==========
     cover: {
-        title: "AI 副业\n实操手册",
-        subtitle: "2026 全新升级版",
-        author: "编著：AI研究院",
-        // 如果设置了图片，将使用图片作为封面（留空则用默认渐变封面）
+        title: "2026\nAI赚钱指南",
+        subtitle: "7条已验证的AI副业路径",
+        author: "从零到月入过万的实操手册",
         image: ""
     },
 
     // ========== 封底设置 ==========
     backCover: {
         text: "感谢阅读",
-        cta: "添加微信领取完整版",
-        // 如果设置了图片，将使用图片作为封底
+        cta: "添加微信领取完整工具包",
         image: ""
     },
 
     // ========== 页面内容 ==========
-    // 将你的图片放入 images/ 文件夹，然后在这里按顺序填入文件名
-    // 支持 jpg, png, webp 格式
     pages: [
         "images/page1.jpg",
         "images/page2.jpg",
@@ -38,35 +34,40 @@ const BOOK_CONFIG = {
         "images/page4.jpg",
         "images/page5.jpg",
         "images/page6.jpg",
-        // 继续添加更多页面...
-        // "images/page7.jpg",
-        // "images/page8.jpg",
+        "images/page7.jpg",
+        "images/page8.jpg",
+        "images/page9.jpg",
+        "images/page10.jpg",
+        "images/page11.jpg",
+        "images/page12.jpg",
+        "images/page13.jpg",
+        "images/page14.jpg",
+        "images/page15.jpg",
+        "images/page16.jpg",
+        "images/page17.jpg",
+        "images/page18.jpg",
+        "images/page19.jpg",
+        "images/page20.jpg",
     ],
 
     // ========== 引流设置 ==========
     cta: {
-        enabled: true,                    // 是否启用引流浮窗
-        showAfterPage: 3,                 // 翻到第几页后显示浮窗
-        icon: "🎁",                       // 浮窗图标
-        title: "免费领取完整版",            // 浮窗标题
-        description: "添加微信获取配套资料", // 浮窗描述
-        wechatId: "your_wechat_id",       // 你的微信号
-        // 如果有二维码图片，放入images文件夹并填写路径
+        enabled: true,
+        showAfterPage: 3,
+        icon: "🎁",
+        title: "免费领取完整工具包",
+        description: "添加微信获取AI赚钱配套资料",
+        wechatId: "your_wechat_id",
         qrcodeImage: ""
     },
 
     // ========== 外观设置 ==========
     appearance: {
-        // 书籍尺寸（单位px，会自动响应式缩放）
         width: 550,
         height: 733,
-        // 是否显示页码
         showPageNumber: true,
-        // 翻页动画时长（毫秒）
         flipDuration: 800,
-        // 是否显示阴影
         showShadow: true,
-        // 背景粒子数量（0为关闭）
         particleCount: 30,
     }
 };
