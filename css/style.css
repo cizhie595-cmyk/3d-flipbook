@@ -1,0 +1,450 @@
+/* ========== 全局重置 ========== */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-dark: #1a1a2e;
+    --bg-mid: #16213e;
+    --accent: #e94560;
+    --accent-light: #ff6b81;
+    --gold: #f5c518;
+    --text-light: #eee;
+    --text-muted: #aaa;
+    --shadow-book: 0 30px 60px rgba(0,0,0,0.5);
+    --page-bg: #fdfaf5;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Noto Serif SC', 'PingFang SC', 'Microsoft YaHei', serif;
+    background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-mid) 100%);
+    color: var(--text-light);
+    user-select: none;
+}
+
+/* ========== 背景粒子 ========== */
+.bg-particles {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(233, 69, 96, 0.15);
+    animation: float-up linear infinite;
+}
+
+@keyframes float-up {
+    0% { transform: translateY(100vh) scale(0); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+}
+
+/* ========== 顶部栏 ========== */
+.top-bar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    z-index: 100;
+    background: rgba(26, 26, 46, 0.8);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo-icon {
+    font-size: 24px;
+}
+
+.logo-text {
+    font-size: 18px;
+    font-weight: 700;
+    background: linear-gradient(90deg, var(--accent-light), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.ctrl-btn {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: var(--text-light);
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.ctrl-btn:hover {
+    background: rgba(255,255,255,0.15);
+    border-color: var(--accent);
+}
+
+/* ========== 书名区域 ========== */
+.book-title-area {
+    position: fixed;
+    top: 56px;
+    left: 0; right: 0;
+    text-align: center;
+    padding: 16px 20px 8px;
+    z-index: 50;
+}
+
+.book-title {
+    font-size: 22px;
+    font-weight: 700;
+    background: linear-gradient(90deg, #fff, var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 2px;
+}
+
+.book-subtitle {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+/* ========== 翻页书容器 ========== */
+.book-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    perspective: 2000px;
+}
+
+.flipbook {
+    position: relative;
+    box-shadow: var(--shadow-book);
+    border-radius: 4px;
+}
+
+/* 页面样式 */
+.page {
+    background-color: var(--page-bg);
+    overflow: hidden;
+    position: relative;
+}
+
+.page-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.page-content img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* 封面特殊样式 */
+.page-cover {
+    background: linear-gradient(135deg, #2c3e50 0%, #1a1a2e 50%, #e94560 100%);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px;
+}
+
+.page-cover .cover-title {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 16px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.page-cover .cover-subtitle {
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 24px;
+}
+
+.page-cover .cover-decoration {
+    width: 60px;
+    height: 3px;
+    background: var(--gold);
+    border-radius: 2px;
+    margin-bottom: 24px;
+}
+
+.page-cover .cover-author {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+}
+
+/* 封底 */
+.page-back-cover {
+    background: linear-gradient(135deg, #1a1a2e 0%, #2c3e50 50%, #e94560 100%);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px;
+}
+
+.page-back-cover .back-text {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.page-back-cover .back-cta {
+    background: var(--gold);
+    color: #1a1a2e;
+    padding: 12px 32px;
+    border-radius: 24px;
+    font-weight: 700;
+    font-size: 15px;
+}
+
+/* 页码 */
+.page-number {
+    position: absolute;
+    bottom: 12px;
+    font-size: 11px;
+    color: #999;
+}
+
+.page-number.left {
+    left: 16px;
+}
+
+.page-number.right {
+    right: 16px;
+}
+
+/* ========== 底部控制栏 ========== */
+.bottom-bar {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    z-index: 100;
+    background: rgba(26, 26, 46, 0.85);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: var(--text-light);
+    padding: 8px 20px;
+    border-radius: 24px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    transition: all 0.2s;
+}
+
+.nav-btn:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    transform: translateY(-1px);
+}
+
+.page-info {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+#page-current {
+    color: var(--gold);
+    font-size: 18px;
+}
+
+.page-sep {
+    margin: 0 2px;
+}
+
+/* ========== 引流浮窗 ========== */
+.cta-float {
+    position: fixed;
+    bottom: 80px;
+    right: 24px;
+    z-index: 200;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+    pointer-events: none;
+}
+
+.cta-float.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.cta-content {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 12px 40px rgba(233, 69, 96, 0.3);
+    position: relative;
+    min-width: 220px;
+    color: #333;
+}
+
+.cta-close {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #999;
+    line-height: 1;
+}
+
+.cta-close:hover {
+    color: var(--accent);
+}
+
+.cta-icon {
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.cta-text {
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.cta-text strong {
+    font-size: 16px;
+    color: var(--accent);
+}
+
+.cta-text p {
+    font-size: 12px;
+    color: #888;
+    margin-top: 4px;
+}
+
+.cta-wechat {
+    background: #f0f9f0;
+    border: 1px dashed #4caf50;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    font-size: 13px;
+    color: #333;
+}
+
+.cta-wechat strong {
+    color: #4caf50;
+    font-size: 15px;
+}
+
+/* ========== 响应式 ========== */
+@media (max-width: 768px) {
+    .book-title {
+        font-size: 16px;
+    }
+    .book-subtitle {
+        font-size: 11px;
+    }
+    .nav-btn span {
+        display: none;
+    }
+    .nav-btn {
+        padding: 8px 14px;
+    }
+    .bottom-bar {
+        gap: 20px;
+    }
+    .cta-float {
+        right: 12px;
+        bottom: 72px;
+    }
+    .cta-content {
+        min-width: 180px;
+        padding: 16px;
+    }
+    .page-cover .cover-title {
+        font-size: 20px;
+    }
+}
+
+/* ========== 翻页阴影增强 ========== */
+.stf__parent {
+    box-shadow: var(--shadow-book) !important;
+}
+
+/* 加载动画 */
+.loading-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: var(--bg-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.5s;
+}
+
+.loading-overlay.hide {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(255,255,255,0.1);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
